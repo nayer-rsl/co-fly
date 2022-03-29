@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html style="background-color:antiquewhite;" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>CoFly</title>
+  <meta name="description" content="some fields for form">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <script type="text/javascript" src="js/script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <header class="header">
+    <h1>CO-Fly</h1>
+    <p>A place to find companion for your flight.</p>
+  </header>
+  <main>
+    <h1>Finding your next flight companion is easier than you think</h1>
+    <h3>Search through the travellers and send a connection request.</h3>
+    <form action="#" method="post" id="search_form" name="search_form">
+
+      <div class="feature">
+        <label for="flightnum">
+          <h2>Enter your flight number:</h2>
+        </label>
+        <input type="text" placeholder="Flight Number..." name="flight" length="6">
+        <span id="error"></span>
+      </div>
+
+      <div class="feature">
+        <label for="role">
+          <h3>I am looking for a</h3>
+        </label>
+        <select id="role" name="rolePref">
+          <option value="Friend">Friend</option>
+          <option value="Guider">Guider</option>
+          <option value="Guidee">Guidee</option>
+        </select>
+      </div>
+
+
+      <div class="feature">
+        <label for="genderPref">
+          <h3>I would like my companion to be</h3>
+        </label>
+        <select id="genderPref" name="genderPref">
+          <option value="no_preference">No_preference</option>
+          <option value="Female">Female</option>
+          <option value="Male">Male</option>
+        </select>
+      </div>
+      <button type="submit" id="search">Search</button>
+
+
+    </form>
+    <span id="noResult"></span>
+    <div class="album">
+      <div class="guidee ab1234 male friend no_preference member">
+        <img src="images/Kramer.jpg" alt="Profile pic">
+        <h4>Cosmo Kramer</h4>
+        <p>Occupation: Entrepreneur</p>
+        <button type="button">Connect</button>
+      </div>
+      <div class="guidee ac1234 male friend no_preference member">
+        <img src="images/George.jpg" alt="Profile pic">
+        <h4>George Costanza</h4>
+        <p>Occupation: Paper-pusher</p>
+        <button type="button">Connect</button>
+      </div>
+      <div class="guidee ad1234 male friend no_preference member">
+        <img src="images/jerry.jpeg" alt="Profile pic">
+        <h4>Jerry Seinfield</h4>
+        <p>Occupation: Stand-up Comedian</p>
+        <button type="button">Connect</button>
+      </div>
+      <div class="guider ab1234 female friend no_preference member">
+        <img src="images/elaine.jpg" alt="Profile pic">
+        <h4>Elaine Benes</h4>
+        <p>Occupation: Copy Writer</p>
+        <button type="button">Connect</button>
+      </div>
+
+    </div>
+  </main>
+</body>
+
+</html>

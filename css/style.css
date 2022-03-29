@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Nunito&family=Raleway&display=swap");
+
+html {
+  background-color: antiquewhite !important;
+}
+.header {
+  border-bottom: 1px solid black;
+}
+
+.member {
+  display: none;
+}
+img {
+  width: 175px;
+  height: 175px;
+  object-fit: cover;
+}
+.member {
+  border: 1px solid black;
+  margin: 5px;
+  padding: 4px;
+}
+.album {
+  display: flex;
+  flex-flow: row wrap;
+}
+input,
+select {
+  max-width: 100px;
+  width: 100%;
+  max-height: 20px;
+}
+
+.feature {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+label {
+  width: 300px;
+}
