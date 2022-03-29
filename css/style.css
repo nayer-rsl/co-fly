@@ -39,3 +39,7 @@ select {
 label {
   width: 300px;
 }
+.album {
+  display: flex;
+  flex-flow: row wrap;
+}
