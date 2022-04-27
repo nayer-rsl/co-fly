@@ -25,7 +25,7 @@ function ready(){
     document.getElementById("noResult").innerHTML = "";
 
     //ACCESS THE ELEMENTS THROUGH THE "FORM HANDLE"
-    var flightNumReq = formHandle.flight.value;
+    var flightNumReq = formHandle.flight;
     
     var roleSlctBox = formHandle.rolePref;
     
@@ -44,31 +44,31 @@ function ready(){
     var flightInvalid = "Please enter a valid flight number!";
 
     //function to check the flight number against empty and null
-    function checkFlightNumber(flightNumReq){
+    function checkFlightNumber(){
 
       //validate the flight number
       var flightNumRegex = /^[A-Za-z]{2}[0-9]{4}$/;
-      if(flightNumRegex.test(flightNumReq) === true){
-        //flightNumReq.focus();
-        flightMessage = flightValid;
-      }else{
+      if(flightNumReq.value === "" || flightNumReq.value === null || !flightNumRegex.test(flightNumReq.value)){
+        flightNumReq.focus();
         flightMessage = flightInvalid;
+      }else{
+        flightMessage = flightValid;
       }       
       return flightMessage;
     }//End checkFlightNumber function
 
+console.log(flightMessage);
     //function output message
     (function message(){
-      if (checkFlightNumber(flightNumReq) === true){
+      if (checkFlightNumber() === true){
         flightNumMsg.innerHTML = "";
-        request.flightNum = flightNumReq;
+        request.flightNum = flightNumReq.value;
       }else{
-        request.flightNum = flightNumReq;
+        request.flightNum = flightNumReq.value;
         flightNumMsg.innerHTML=flightMessage;
       }
     })();//End function to output message
     // Get the passengers with the same flight number
-
     var flightGroup = Array.prototype.slice.call(document.getElementsByClassName(request.flightNum.toLowerCase()));
 
     // Get the passengers with the same role
@@ -77,15 +77,17 @@ function ready(){
     var genderGroup = Array.prototype.slice.call(document.getElementsByClassName(request.gender.toLowerCase()));
 
     var resultMessage = document.getElementById("noResult");
+    
     var returnMessage = "";
     var noResultReturnMessage = "There are no traveller matching the information provided. Please try again using different information!";
     var existResultMessage = true;
 
-    var common = getCommon(flightGroup, roleGroup, genderGroup);
-    //function to return the result message according to the search results
-    function result(flightNumReq,flightGroup, roleGroup, genderGroup){
+    var common = getCommon();
 
-      if(getCommon(flightGroup, roleGroup, genderGroup).length === 0  && checkFlightNumber(flightNumReq) === true){
+    //function to return the message according to the results
+    function result(){
+
+      if( flightMessage === true && common.length === 0){
         returnMessage = noResultReturnMessage;
       }else{
         returnMessage = existResultMessage;
@@ -96,7 +98,7 @@ function ready(){
 
     //function to show users or a no result message
     (function userMsg(){
-      if(result(flightNumReq,flightGroup, roleGroup, genderGroup) === true){
+      if(result() === true){
         for (const e of common){
           e.style.display = "block";
         }
@@ -104,8 +106,9 @@ function ready(){
         resultMessage.innerHTML = returnMessage;
       }
     })();//End userMsg
-    //functio to find users with matching search criteria
-    function getCommon(flightGroup, roleGroup, genderGroup) {
+
+    //functio to find users
+    function getCommon() {
       // Array to contain common elements
       var common = [];                   
       // Finding common elements
